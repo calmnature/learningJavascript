@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function 삼육구게임(number) {
+            if(number % 3 == 0) console.log('박수');
+            else console.log('통과');
+        }
+
+        삼육구게임(15);
+
+        function 삼육구게임업글(number) {
+            if(number % 9 == 0) console.log('박수x2')
+            else if(number % 3 == 0) console.log('박수')
+            else console.log('통과');
+        }
+        삼육구게임업글(15);
+        삼육구게임업글(18);
+
+        function 합격했냐(num1, num2) {
+            if(num1 < 40 || num2 < 40) console.log('불합격');
+            else if(num1 + num2 < 120) console.log('불합격');
+            else console.log('합격');
+        }
+        합격했냐(70, 70);
+        합격했냐(30, 100);
+        합격했냐(50, 50);
+    </script>    
+</body>
+</html>

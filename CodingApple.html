@@ -43,17 +43,6 @@
     </div> 
 
     <script>
-        // 전송 버튼 누를 시 input에 입력 값이 공백일 경우 알림창을 띄움
-        // document.querySelector('#send').addEventListener('submit', function(e){
-        //     e.preventDefault();
-        //     let email = document.querySelector('#email').value;
-        //     let pw = document.querySelector('#pw').value;
-        //     if(email === '' || email === undefined) alert('아이디를 입력하세요.');
-        //     else if(pw === '' || pw === undefined) alert('비밀번호를 입력하세요.');
-        //     else e.target.submit();
-        // });
-
-        // 주의사항 : on('submit', function(){})은 <form> 태그에 사용해야 함
         $('#send').on('click', function(e){
             e.preventDefault();
             let email = $('#email').val();
@@ -61,6 +50,13 @@
             if(email === '' || email === undefined) alert('아이디를 입력하세요.');
             else if(pw === '' || pw === undefined) alert('비밀번호를 입력하세요.');
             else e.target.submit();
+        });
+        
+        // input, change 모두 input 태그의 변화에 대한 이벤트지만,
+        // input은 입력을 할 때마다 발생하는 이벤트이고
+        // change는 입력을 모두 한 뒤 input 태그에서 포커스를 잃었을 때 발생하는 이벤트
+        document.querySelector('#email').addEventListener('input', function(){
+            console.log(document.querySelector('#email').value);
         });
     </script>
 
