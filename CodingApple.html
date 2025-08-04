@@ -6,6 +6,7 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link href="main.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   </head>
   <body>
     <nav class="navbar navbar-light bg-light">
@@ -25,7 +26,58 @@
         <li class="list-group-item">And a fifth one</li>
     </ul>
 
+    <p class="hello">안녕</p>
+    <p class="hello">안녕</p>
+    <p class="hello">안녕</p>
+    <button id="test-btn">버튼</button>
+    <br><br>
+    <button id="login">버튼</button>
+
+    <div class="black-bg">
+        <div class="white-bg">
+            <h4>로그인하세요</h4>
+            <button class="btn btn-danger" id="close">닫기</button>
+        </div>
+    </div> 
+
     <script>
+        $('#login').on('click', function(){
+            $('.black-bg').addClass('show-modal');
+        });
+
+        $('#close').on('click', function(){
+            $('.black-bg').removeClass('show-modal');
+        });
+
+        // EvnetListener 차이
+        document.querySelector('#test-btn').addEventListener('click', function(){});
+        $('#test-btn').on('click', function(){
+            // 버튼 클릭 시 p 태그를 숨기려면, display를 none으로 변경해야 하지만, jQuery에선 hide()라는 함수도 제공
+            // $('.hello').css('display', 'none');
+            
+            // $('.hello').hide();
+            
+            // JS로만 구현을 하려한다면?
+            // document.querySelectorAll('.hello')[0].style.display = 'none';
+            // document.querySelectorAll('.hello')[1].style.display = 'none';
+            // document.querySelectorAll('.hello')[2].style.display = 'none';
+
+            // 애니메이션 효과
+            $('.hello').fadeOut();
+        });
+
+        // hello 라는 p 태그 3개를 모두 바보로 변경을 하려할 때, JS와 jQuery의 차이
+        // document.querySelectorAll('.hello')[0].innerHTML = '바보';
+        // document.querySelectorAll('.hello')[1].innerHTML = '바보';
+        // document.querySelectorAll('.hello')[2].innerHTML = '바보';
+        $('.hello').html('바보');
+
+        // jQuery를 사용했을 때, 코드의 간략화
+        // document.querySelector('.hello').innerHTML = '바보';
+        // $('.hello').html('바보');
+        // $('.hello').css('color', 'red');
+        // $('.hello').addClass('show');
+
         // document.getElementsByClassName('navbar-toggler')[0].addEventListener('click', function(){
         //     // document.getElementsByClassName('list-group')[0].classList.add('show');
         //     document.getElementsByClassName('list-group')[0].classList.toggle('show');
