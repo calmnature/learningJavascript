@@ -25,22 +25,49 @@
         <li class="list-group-item">A fourth item</li>
         <li class="list-group-item">And a fifth one</li>
     </ul>
-    <button id="login">로그인</button>
 
     <div class="black-bg">
         <div class="white-bg">
             <h4>로그인하세요</h4>
-            <button class="btn btn-danger" id="close">닫기</button>
+            <form action="success.html">
+                <div class="my-3">
+                    <input type="text" class="form-control" id="email">
+                </div>
+                <div class="my-3">
+                    <input type="password" class="form-control" id="pw">
+                </div>
+                <button type="submit" id="send" class="btn btn-primary">전송</button>
+                <button type="button" class="btn btn-danger" id="close">닫기</button>
+            </form> 
         </div>
     </div> 
 
-    <!-- 
-        one-way 애니메이션 만드는 법
-        1. 시작 스타일
-        2. 최종 스타일
-        3. 원할 때 최종 스타일로 변하라고 코드 짬
-        4. transition 추가
-      -->
+    <script>
+        // 전송 버튼 누를 시 input에 입력 값이 공백일 경우 알림창을 띄움
+        // document.querySelector('#send').addEventListener('submit', function(e){
+        //     e.preventDefault();
+        //     let email = document.querySelector('#email').value;
+        //     let pw = document.querySelector('#pw').value;
+        //     if(email === '' || email === undefined) alert('아이디를 입력하세요.');
+        //     else if(pw === '' || pw === undefined) alert('비밀번호를 입력하세요.');
+        //     else e.target.submit();
+        // });
+
+        // 주의사항 : on('submit', function(){})은 <form> 태그에 사용해야 함
+        $('#send').on('click', function(e){
+            e.preventDefault();
+            let email = $('#email').val();
+            let pw = $('#pw').val();
+            if(email === '' || email === undefined) alert('아이디를 입력하세요.');
+            else if(pw === '' || pw === undefined) alert('비밀번호를 입력하세요.');
+            else e.target.submit();
+        });
+    </script>
+
+    <div class="main-bg">
+        <h4>Shirts on Sale</h4>
+        <button id="login" class="btn btn-danger">로그인</button>
+    </div>
 
     <script>
         $('#login').on('click', function(){

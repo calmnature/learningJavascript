@@ -19,6 +19,7 @@
   /* 4. 시작 스타일에 transition 추가 */
   transition: all 1s;
 }
+
 .white-bg {
   background: white;
   border-radius: 5px;
@@ -30,4 +31,9 @@
     /* 2. 최종 스타일 */
     visibility: visible;
     opacity: 1;
+}
+
+.main-bg {
+    padding : 100px 20px;
+    background-color: lightgray;
 }
