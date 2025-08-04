@@ -25,13 +25,7 @@
         <li class="list-group-item">A fourth item</li>
         <li class="list-group-item">And a fifth one</li>
     </ul>
-
-    <p class="hello">안녕</p>
-    <p class="hello">안녕</p>
-    <p class="hello">안녕</p>
-    <button id="test-btn">버튼</button>
-    <br><br>
-    <button id="login">버튼</button>
+    <button id="login">로그인</button>
 
     <div class="black-bg">
         <div class="white-bg">
@@ -40,48 +34,23 @@
         </div>
     </div> 
 
+    <!-- 
+        one-way 애니메이션 만드는 법
+        1. 시작 스타일
+        2. 최종 스타일
+        3. 원할 때 최종 스타일로 변하라고 코드 짬
+        4. transition 추가
+      -->
+
     <script>
         $('#login').on('click', function(){
+            // 3. 원할 때 최종 스타일로 변하라고 코드 짬
             $('.black-bg').addClass('show-modal');
         });
 
         $('#close').on('click', function(){
             $('.black-bg').removeClass('show-modal');
         });
-
-        // EvnetListener 차이
-        document.querySelector('#test-btn').addEventListener('click', function(){});
-        $('#test-btn').on('click', function(){
-            // 버튼 클릭 시 p 태그를 숨기려면, display를 none으로 변경해야 하지만, jQuery에선 hide()라는 함수도 제공
-            // $('.hello').css('display', 'none');
-            
-            // $('.hello').hide();
-            
-            // JS로만 구현을 하려한다면?
-            // document.querySelectorAll('.hello')[0].style.display = 'none';
-            // document.querySelectorAll('.hello')[1].style.display = 'none';
-            // document.querySelectorAll('.hello')[2].style.display = 'none';
-
-            // 애니메이션 효과
-            $('.hello').fadeOut();
-        });
-
-        // hello 라는 p 태그 3개를 모두 바보로 변경을 하려할 때, JS와 jQuery의 차이
-        // document.querySelectorAll('.hello')[0].innerHTML = '바보';
-        // document.querySelectorAll('.hello')[1].innerHTML = '바보';
-        // document.querySelectorAll('.hello')[2].innerHTML = '바보';
-        $('.hello').html('바보');
-
-        // jQuery를 사용했을 때, 코드의 간략화
-        // document.querySelector('.hello').innerHTML = '바보';
-        // $('.hello').html('바보');
-        // $('.hello').css('color', 'red');
-        // $('.hello').addClass('show');
-
-        // document.getElementsByClassName('navbar-toggler')[0].addEventListener('click', function(){
-        //     // document.getElementsByClassName('list-group')[0].classList.add('show');
-        //     document.getElementsByClassName('list-group')[0].classList.toggle('show');
-        // });
 
         document.querySelector('.navbar-toggler').addEventListener('click', function(){
             document.querySelector('.list-group').classList.toggle('show');

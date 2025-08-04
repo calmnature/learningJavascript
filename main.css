@@ -13,7 +13,11 @@
   background : rgba(0,0,0,0.5);
   z-index : 5;
   padding: 30px;
-  display: none;
+  /* 1. 시작 스타일 */
+  visibility: hidden;
+  opacity: 0;
+  /* 4. 시작 스타일에 transition 추가 */
+  transition: all 1s;
 }
 .white-bg {
   background: white;
@@ -23,5 +27,7 @@
 
 /* 해당 CSS가 black-bg보다 위에 있으면 display:block이 무시되고 아래에 있는 .black-bg의 display:none이 최종 적용 됨 */
 .show-modal {
-    display: block;
+    /* 2. 최종 스타일 */
+    visibility: visible;
+    opacity: 1;
 }
