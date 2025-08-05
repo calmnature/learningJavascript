@@ -42,27 +42,41 @@
     <div class="black-bg">
         <div class="white-bg">
             <h4>로그인하세요</h4>
-            <form action="success.html">
+            <form action="success.html" id="send">
                 <div class="my-3">
                     <input type="text" class="form-control" id="email">
                 </div>
                 <div class="my-3">
                     <input type="password" class="form-control" id="pw">
                 </div>
-                <button type="submit" id="send" class="btn btn-primary">전송</button>
+                <button type="submit" class="btn btn-primary">전송</button>
                 <button type="button" class="btn btn-danger" id="close">닫기</button>
             </form> 
         </div>
     </div> 
 
     <script>
-        $('#send').on('click', function(e){
+        $('#send').on('suhmit', function(e){
             e.preventDefault();
             let email = $('#email').val();
             let pw = $('#pw').val();
-            if(email === '' || email === undefined) alert('아이디를 입력하세요.');
-            else if(pw === '' || pw === undefined) alert('비밀번호를 입력하세요.');
-            else e.target.submit();
+            if(email === '' || email === undefined) {
+                alert('아이디를 입력하세요.');
+                return;
+            }
+            else if(pw === '' || pw === undefined) {
+                alert('비밀번호를 입력하세요.');
+                return;
+            }
+            
+            if(!/\S+@\S+\.\S+/.test(email)) {
+                alert('이메일 형식 맞춰');
+                return;
+            }
+
+            if(!/[A-Z]/.test(pw)) alert('비번에 대문자 없음');
+
+            e.submit();
         });
         
         // input, change 모두 input 태그의 변화에 대한 이벤트지만,
