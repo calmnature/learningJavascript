@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(convertMs(1, 30));
+        console.log(convertMs(2, 10));
+        
+        function convertMs(min, sec) {
+            var totalSec = min * 60 + sec;
+            return totalSec * 1000;
+        }
+
+        console.log(salePrice(70, false));
+        console.log(salePrice(10, true));
+
+        function salePrice(price, firstBuy) {
+            price = price * 0.9;
+            if(firstBuy) price -= 1.5;
+            return price.toFixed(2);
+        }
+    </script>
+</body>
+</html>
