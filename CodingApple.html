@@ -103,23 +103,56 @@
             <div class="slide-box">
                 <img src="car3-1.png">
             </div>
+            <div class="slide-box">
+                <img src="img4.png">
+            </div>
         </div>
     </div>
+    <button class="previous">이전</button>
     <button class="slide-1">1</button>
     <button class="slide-2">2</button>
     <button class="slide-3">3</button>
+    <button class="slide-4">4</button>
+    <button class="next">다음</button>
 
     <script>
+        var 지금사진 = 1;
+        var 사진개수 = 4;
+
+        $('.previous').on('click', function(){
+            if(지금사진 <= 1) {
+                지금사진 = 사진개수 + 1;
+            }
+            $('.slide-container').css('transform', `translateX(${(지금사진 - 2) * -100}vw)`);
+            지금사진--;
+        });
+        
+        $('.next').on('click', function(){
+            if(지금사진 >= 사진개수) {
+                지금사진 = 0;
+            }
+            $('.slide-container').css('transform', `translateX(${지금사진 * -100}vw)`);
+            지금사진++;
+        });
+
         $('.slide-1').on('click', function(){
             $('.slide-container').css('transform', 'translateX(0vw)');
+            지금사진 = 1;
         });
-
+        
         $('.slide-2').on('click', function(){
             $('.slide-container').css('transform', 'translateX(-100vw)');
+            지금사진 = 2;
         });
-
+        
         $('.slide-3').on('click', function(){
             $('.slide-container').css('transform', 'translateX(-200vw)');
+            지금사진 = 3;
+        });
+        
+        $('.slide-4').on('click', function(){
+            $('.slide-container').css('transform', 'translateX(-300vw)');
+            지금사진 = 4;
         });
     </script>
 
