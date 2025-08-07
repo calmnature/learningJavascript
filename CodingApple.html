@@ -20,6 +20,25 @@
     </nav> 
 
     <script>
+        // window.addEventListener('scroll', function(){
+        //     console.log(window.scrollY);
+        //     window.scrollBy(0, 100);
+        // });
+        $(window).on('scroll', function(){
+            // scrollTop() = window.scrollY + window.scrollBy
+            // console.log($(window).scrollTop());
+            // $(window).scrollTop(100);
+            var font_size;
+            if(window.scrollY < 100) {
+                font_size = '30px';
+            } else {
+                font_size = '16px';
+            }
+            $('.navbar-brand').css('font-size', font_size);
+        });
+    </script>
+
+    <script>
         let count = 0;
         $('.badge').on('click',function(){
             count++;
@@ -31,7 +50,7 @@
         });
     </script>
 
-    <ul class="list-group">
+    <ul cwlass="list-group">
         <li class="list-group-item">An item</li>
         <li class="list-group-item">A second item</li>
         <li class="list-group-item">A third item</li>
@@ -91,6 +110,24 @@
         <h4>Shirts on Sale</h4>
         <button id="login" class="btn btn-danger">로그인</button>
     </div>
+
+    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur praesentium exercitationem.
+    </div>
+    <script>
+        $('.lorem').on('scroll', function(){
+            var 스크롤양 = $('.lorem').scrollTop();
+            // var 실제높이 = document.querySelector('.lorem').scrollHeight;
+            var 실제높이 = $('.lorem')[0].scrollHeight;
+            var 높이 = $('.lorem').height();
+            console.log(`${스크롤양} / ${높이} / ${실제높이}`);
+            if(스크롤양 + 높이 >= 실제높이 - 3) {
+                alert('약관 다 읽음!');
+            }
+        });
+    </script> 
+
+    <div style="height: 1000px;"></div>
 
     <div style="overflow: hidden;">
         <div class="slide-container">
