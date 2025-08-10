@@ -1,0 +1,22 @@
+{
+  "name": "leaningjavascript",
+  "version": "1.0.0",
+  "description": "hellow",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calmnature/learningJavascript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/calmnature/learningJavascript/issues"
+  },
+  "homepage": "https://github.com/calmnature/learningJavascript#readme",
+  "dependencies": {
+    "@types/jquery": "^3.5.32"
+  }
+}
