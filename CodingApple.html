@@ -20,14 +20,7 @@
     </nav> 
 
     <script>
-        // window.addEventListener('scroll', function(){
-        //     console.log(window.scrollY);
-        //     window.scrollBy(0, 100);
-        // });
         $(window).on('scroll', function(){
-            // scrollTop() = window.scrollY + window.scrollBy
-            // console.log($(window).scrollTop());
-            // $(window).scrollTop(100);
             var font_size;
             if(window.scrollY < 100) {
                 font_size = '30px';
@@ -75,6 +68,23 @@
     </div> 
 
     <script>
+        // $('.black-bg').on('click', function(){
+        //     $('.black-bg').removeClass('show-modal');
+        // });
+        
+        $('.black-bg').on('click', function(e){
+            e.target; // 유저가 실제로 누른 것
+            e.currentTarget; // 이벤트 리스너가 달린 곳 = this
+            e.preventDefault(); // 기본 동작 방지 (form - submit)
+            e.stopPropagation(); // 상위 요소의 이벤트 버블링을 막음
+            
+            if(e.target == this) {
+                $('.black-bg').removeClass('show-modal');
+            }
+        });
+    </script>
+
+    <script>
         $('#send').on('suhmit', function(e){
             e.preventDefault();
             let email = $('#email').val();
@@ -110,22 +120,6 @@
         <h4>Shirts on Sale</h4>
         <button id="login" class="btn btn-danger">로그인</button>
     </div>
-
-    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur praesentium exercitationem.
-    </div>
-    <script>
-        $('.lorem').on('scroll', function(){
-            var 스크롤양 = $('.lorem').scrollTop();
-            // var 실제높이 = document.querySelector('.lorem').scrollHeight;
-            var 실제높이 = $('.lorem')[0].scrollHeight;
-            var 높이 = $('.lorem').height();
-            console.log(`${스크롤양} / ${높이} / ${실제높이}`);
-            if(스크롤양 + 높이 >= 실제높이 - 3) {
-                alert('약관 다 읽음!');
-            }
-        });
-    </script> 
 
     <div style="height: 1000px;"></div>
 
