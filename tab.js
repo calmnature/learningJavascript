@@ -1,3 +1,7 @@
+var car2 = {name: '소나타', price: 50000}
+$('#name').html(car2.name);
+$('#price').html(car2.price);
+
 // $('.tab-button').eq(0).on('click', function(){
 //     $('.tab-button').removeClass('orange');
 //     $('.tab-button').eq(0).addClass('orange');
@@ -58,3 +62,4 @@ function 탭열기(숫자) {
 //     let idx = $('.tab-button').index(this);
 //     $('.tab-content').eq(idx).addClass('show');
 // });
+
