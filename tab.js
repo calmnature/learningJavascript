@@ -1,6 +1,6 @@
-var car2 = {name: '소나타', price: 50000}
+var car2 = {name: '소나타', price: [50000, 3000, 4000]}
 $('#name').html(car2.name);
-$('#price').html(car2.price);
+$('#price').html(car2.price[0]);
 
 // $('.tab-button').eq(0).on('click', function(){
 //     $('.tab-button').removeClass('orange');
