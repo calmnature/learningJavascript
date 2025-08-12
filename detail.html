@@ -63,6 +63,7 @@
         <select class="form-select mt-2">
             <option>모자</option>
             <option>셔츠</option>
+            <option>바지</option>
         </select>
         <select class="form-select mt-2 form-hide">
             <option>95</option>
@@ -72,12 +73,18 @@
     </form>
 
     <script>
+        let shirt = [95, 100, 105];
+        let pants = [28, 30];
         $('.form-select').eq(0).on('change', function(e){
-            console.log(this.value);
-            console.log($(this).val());
-            console.log(e.currentTarget.value);
-            if($(this).val() == '셔츠') {
+            let val = $(this).val();
+            if(val != '모자') {
                 $('.form-select').eq(1).removeClass('form-hide');
+                $('.form-select').eq(1).html('');
+                let optionList = val == '셔츠' ? shirt : pants;
+                for(let i = 0; i < optionList.length; i++) {
+                    let option = $('<option>').html(optionList[i]);
+                    $('.form-select').eq(1).append(option);
+                }
             }else {
                 $('.form-select').eq(1).addClass('form-hide');
             }
