@@ -81,14 +81,24 @@
                 $('.form-select').eq(1).removeClass('form-hide');
                 $('.form-select').eq(1).html('');
                 let optionList = val == '셔츠' ? shirt : pants;
-                for(let i = 0; i < optionList.length; i++) {
-                    let option = $('<option>').html(optionList[i]);
-                    $('.form-select').eq(1).append(option);
-                }
+                // for(let i = 0; i < optionList.length; i++) {
+                //     let option = $('<option>').html(optionList[i]);
+                //     $('.form-select').eq(1).append(option);
+                // }
+
+                optionList.forEach(function(size) {
+                    $('.form-select').eq(1).append(`<option>${size}</option>`);
+                }); 
             }else {
                 $('.form-select').eq(1).addClass('form-hide');
             }
         });
+
+        // object 반복문 for in
+        var obj = {name : 'kim', age : 32}
+        for(var key in obj) {
+            console.log(key + ' / ' + obj[key]);
+        }
     </script>
 
     <div class="container mt-5">
