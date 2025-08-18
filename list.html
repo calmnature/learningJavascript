@@ -60,11 +60,12 @@
             item.forEach((a) => {
                 var div = $('<div>').addClass('col-sm-4');
                 var img = $('<img>').addClass('w-100').prop('src', 'https://placehold.co/600');
-                var h5 = $('<h5>').html(`${a.price}`);
-                var p = $('<p>').html(`가격 : ${a.title}`);
+                var h5 = $('<h5>').html(`${a.title}`);
+                var p = $('<p>').html(`가격 : ${a.price}`);
+                var button = $('<button>').addClass('buy').html('구매');
         
                 $('.row').append(div);
-                div.append(img).append(h5).append(p);
+                div.append(img).append(h5).append(p).append(button);
             });
         }
     </script>
@@ -77,6 +78,23 @@
         ];
 
         appendItem(products);
+
+        $('.buy').on('click', function(){
+            // var title = $(this).siblings('h5')[0].innerHTML
+            var title = $(this).siblings('h5').text();
+            var cartList = [];
+            if(localStorage.getItem('cart') == null) {
+                cartList.push(title);
+                localStorage.setItem('cart', JSON.stringify(cartList));
+            } else {
+                // cartList = JSON.parse(localStorage.getItem('cart'));
+                cartList = JSON.parse(localStorage.cart);
+                if(!cartList.includes(title)) {
+                    cartList.push(title);
+                    localStorage.setItem('cart', JSON.stringify(cartList));
+                }
+            }
+        });
 
         $('#price').on('click', function(){
             products.sort(function(a, b){
