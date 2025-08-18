@@ -43,7 +43,7 @@
         });
     </script>
 
-    <ul cwlass="list-group">
+    <ul class="list-group">
         <li class="list-group-item">An item</li>
         <li class="list-group-item">A second item</li>
         <li class="list-group-item">A third item</li>
@@ -121,21 +121,19 @@
         <button id="login" class="btn btn-danger">로그인</button>
     </div>
 
-    <div style="height: 1000px;"></div>
-
     <div style="overflow: hidden;">
         <div class="slide-container">
             <div class="slide-box">
-                <img src="car1-1.png">
+                <img src="car1-1.png" draggable="false">
             </div>
             <div class="slide-box">
-                <img src="car2-1.png">
+                <img src="car2-1.png" draggable="false">
             </div>
             <div class="slide-box">
-                <img src="car3-1.png">
+                <img src="car3-1.png" draggable="false">
             </div>
             <div class="slide-box">
-                <img src="img4.png">
+                <img src="img4.png" draggable="false">
             </div>
         </div>
     </div>
@@ -145,6 +143,111 @@
     <button class="slide-3">3</button>
     <button class="slide-4">4</button>
     <button class="next">다음</button>
+
+    <script>
+        var sPosition = 0;
+        var isPress = false;
+        var nowImg = 1;
+        var length = $('.slide-box').length;
+
+        for(let i = 0; i < length; i++) {
+            $('.slide-box').eq(i).on('mousedown', function(e){
+                sPosition = e.clientX;
+                isPress = true;
+            });
+
+            $('.slide-box').eq(i).on('mousemove', function(e){
+                if(isPress) {
+                    var position = e.clientX - sPosition;
+                    var vw = window.innerWidth;
+                    var baseX = nowImg * -vw;
+                    var move = baseX + window.innerWidth + position;
+                    // $('.slide-container').css('transform', `translateX(${baseX + window.innerWidth + position}px)`);
+                    console.log(position);
+                    if(nowImg == 1 && position > 0) {
+                        return;
+                    } else if(nowImg == length && position < 0) {
+                        return;
+                    }
+                    $('.slide-container').css('transform', `translateX(${baseX + window.innerWidth + position}px)`);
+                } 
+            });
+
+            $('.slide-box').eq(i).on('mouseup', function(e){
+                isPress = false;
+                var position = e.clientX - sPosition;
+                if(position <= -200) {
+                    if(nowImg >= length) return;
+                    $('.slide-container')
+                    .css('transition', 'all 0.5s')
+                    .css('transform', `translateX(${nowImg * -100}vw)`);
+                    nowImg++;
+                } else if(position >= 200) {
+                    if(nowImg < 2) return;
+                    $('.slide-container')
+                    .css('transition', 'all 0.5s')
+                    .css('transform', `translateX(${(nowImg-2) * -100}vw)`);
+                    nowImg--;
+                }else {
+                    $('.slide-container')
+                    .css('transition', 'all 0.5s')
+                    .css('transform', `translateX(${(nowImg-1) * -100}vw)`);
+                }
+
+                setTimeout(() => {
+                    $('.slide-container').css('transition', 'none');
+                }, 500);
+            });
+
+            $('.slide-box').eq(i).on('touchstart', function(e){
+                sPosition = e.touches[0].clientX;
+                isPress = true;
+            });
+
+            $('.slide-box').eq(i).on('touchmove', function(e){
+                if(isPress) {
+                    var position = e.touches[0].clientX - sPosition;
+                    var vw = window.innerWidth;
+                    var baseX = nowImg * -vw;
+                    var move = baseX + window.innerWidth + position;
+                    // $('.slide-container').css('transform', `translateX(${baseX + window.innerWidth + position}px)`);
+                    console.log(position);
+                    if(nowImg == 1 && position > 0) {
+                        return;
+                    } else if(nowImg == length && position < 0) {
+                        return;
+                    }
+                    $('.slide-container').css('transform', `translateX(${baseX + window.innerWidth + position}px)`);
+                } 
+            });
+
+            $('.slide-box').eq(i).on('touchend', function(e){
+                isPress = false;
+                var position = e.changedTouches[0].clientX - sPosition;
+                if(position <= -200) {
+                    if(nowImg >= length) return;
+                    $('.slide-container')
+                    .css('transition', 'all 0.5s')
+                    .css('transform', `translateX(${nowImg * -100}vw)`);
+                    nowImg++;
+                } else if(position >= 200) {
+                    if(nowImg < 2) return;
+                    $('.slide-container')
+                    .css('transition', 'all 0.5s')
+                    .css('transform', `translateX(${(nowImg-2) * -100}vw)`);
+                    nowImg--;
+                }else {
+                    $('.slide-container')
+                    .css('transition', 'all 0.5s')
+                    .css('transform', `translateX(${(nowImg-1) * -100}vw)`);
+                }
+
+                setTimeout(() => {
+                    $('.slide-container').css('transition', 'none');
+                }, 500);
+            });
+        }
+    </script>
 
     <script>
         var 지금사진 = 1;
@@ -198,7 +301,7 @@
         });
 
         document.querySelector('.navbar-toggler').addEventListener('click', function(){
-            document.querySelector('.list-group').classList.toggle('show');
+            $('.list-group').toggle('show');
         });
     </script>
 

@@ -39,8 +39,8 @@
 }
 
 .slide-container {
-    width: 300vw;
-    transition: all 1s;
+    width: 400vw;
+    /* transition: all 1s; */
 }
 
 .slide-box {
@@ -50,6 +50,7 @@
 
 .slide-box img {
     width: 100%;
+    height: 600px;
 }
 
 .navbar {
