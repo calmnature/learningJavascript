@@ -32,7 +32,7 @@ body {
 }
 
 #cart {
-    height: 400px;
+    height: 600px;
     margin: 20px;
     padding: 10px;
     background-color: grey;
@@ -44,12 +44,12 @@ body {
 
 #dragdrop {
     background-color: black;
-    height: 300px;
+    height: 500px;
     margin: 20px;
     padding: 10px;
 }
 
-#dragdrop p {
+#init {
     font-size: 20px;
     font-weight: bold;
     color: white;
