@@ -27,8 +27,8 @@ function createProduct(product, keyword) {
     if(keyword !== null && keyword !== undefined) {
         let titleHtml = createTitleHtml(product.title, keyword);
         let brandHtml = createTitleHtml(product.brand, keyword);
-        title = $('<p>').addClass('card-text').addClass('title').html(product.title);
-        company = $('<p>').addClass('card-text').addClass('company').html(product.brand);
+        title = $('<p>').addClass('card-text').addClass('title').html(titleHtml);
+        company = $('<p>').addClass('card-text').addClass('company').html(brandHtml);
     }else {
         title = $('<p>').addClass('card-text').addClass('title').html(product.title);
         company = $('<p>').addClass('card-text').addClass('company').html(product.brand);
@@ -42,11 +42,17 @@ function createProduct(product, keyword) {
 }
 
 function createTitleHtml(value, keyword) {
-    let tmp = '';
+    let res = '';
     let idx = value.indexOf(keyword);
     if(idx == -1) {
         return value;
     }else {
-        tmp += value.subString(0, );
+        res += value.substring(0, idx);
+        console.log(res);
+        res += `<span style='background: yellow;'>${value.substring(idx, idx + keyword.length)}</span>`
+        console.log(res);
+        res += value.substring(idx + keyword.length)
+        console.log(res);
+        return res;
     }
 }
