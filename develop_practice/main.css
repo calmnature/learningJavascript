@@ -1,0 +1,56 @@
+body {
+    background-color: lightgrey;
+    margin: 0px;
+    padding: 0px;
+}
+
+.product {
+    height: 450px;
+    margin: 10px;
+    padding: 20px;
+    display: flex;
+}
+
+.card {
+    height: 400px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.company {
+    font-size: 14px;
+    color: gray;
+}
+
+.price {
+    font-size: 18px;
+}
+
+#cart {
+    height: 400px;
+    margin: 20px;
+    padding: 10px;
+    background-color: grey;
+}
+
+#cart h3 {
+    font-weight: bold;
+}
+
+#dragdrop {
+    background-color: black;
+    height: 300px;
+    margin: 20px;
+    padding: 10px;
+}
+
+#dragdrop p {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
