@@ -54,3 +54,9 @@ body {
     font-weight: bold;
     color: white;
 }
+
+#totalBox {
+    background: lightgoldenrodyellow;
+    margin: 20px;
+    padding: 10px;
+}

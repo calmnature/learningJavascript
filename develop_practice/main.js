@@ -66,10 +66,16 @@ $(document).on('click', '.btn', function(e){
     let drop = $('#dragdrop');
     if(drop.find('#init').length > 0) drop.html('');
     if(drop.find(`#${card.id}`).length > 0) return;
-    $('#dragdrop').append(card.cloneNode(true, true));
+    // 담기 버튼을 input tag로 변경해야 됨.
+    let deepCopy = card.cloneNode(true, true);
+    $(deepCopy).find('.btn').remove();
+    let price = $(deepCopy).find('.price');
+    price.html(price.html().replace('가격 : ', ''));
+    $(deepCopy).find('.card-body').append($('<input>').attr('type', 'number').addClass('amount'));
+    $('#dragdrop').append(deepCopy);
 });
 
-// Drag & Drop 기능
+// 장바구니 담기 - Drag & Drop 기능
 // Ajax 시점 문제로 동적으로 생성되는 요소에는 이벤트 위임을 권장한다고 함
 $(document).on('dragstart', '.card', function(e) {
     e.originalEvent.dataTransfer.setData('targetId', e.target.id);
@@ -85,5 +91,17 @@ $(document).on('dragover', '#dragdrop', function(e){
     let targetId = e.originalEvent.dataTransfer.getData('targetId');
     if($(this).find(`#${targetId}`).length > 0) return;
     let deepCopy = $(`#${targetId}`)[0].cloneNode(true, true);
+    // 담기 버튼을 input tag로 변경해야 됨.
+    $(deepCopy).find('.btn').remove();
+    let price = $(deepCopy).find('.price');
+    price.html(price.html().replace('가격 : ', ''));
+    $(deepCopy).find('.card-body').append($('<input>').attr('type', 'number').addClass('amount'));
     e.target.append(deepCopy);
+});
+
+$(document).on('input', '.amount', function(e){
+    let amount = e.target.value;
+    let productPrice = $(e.target).siblings('.price')[0].innerHTML;
+    let totalPrice = $('#totalPrice');
+    totalPrice.html(Number.parseInt(totalPrice.html()) + (amount * productPrice) - (amount-1) * productPrice);
 });
